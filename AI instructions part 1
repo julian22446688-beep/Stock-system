@@ -1,0 +1,1135 @@
+Auditing instructions:
+You are auditing Python code for OPERATIVE SYSTEM v6.8.
+Your job is to audit the requested section of the script only, using the ACTUAL FILE CONTENT,
+line by line, function by function, helper by helper. Do not rely on prior summaries, memory, or
+earlier bug lists unless I explicitly tell you to use them as a seed list to verify.
+You must audit with the following exact method.
+CORE OBJECTIVE
+Find every “true bug” in Section 3.
+A “true bug” means ANY of the following:
+1. Any mismatch to my system logic.
+2. Any data-extraction mismatch against what the system actually requires.
+3. Any provider-priority violation.
+4. Any wrong date anchoring.
+5. Any row-order / sorting assumption that can corrupt latest/current values.
+6. Any NULL-policy violation.
+7. Any dead code.
+8. Any useless code that slows the script or wastes API calls.
+9. Any runtime bug, NameError, UnboundLocalError, import-time failure, or other coding mistake
+that can break execution.
+10. Any logic that can distort the two composite scores downstream.
+Do NOT count the following as bugs unless they truly violate the system:
+- manual-by-design fields
+- nullable-by-design fields
+- accepted documented approximations
+- source limitations that are explicitly acceptable under the current workflow
+- derivative effects when a root bug already captures the problem
+If a problem is a downstream consequence of a root bug, count the ROOT bug only and
+explicitly say the downstream issue is derivative.
+STRICT AUDIT DISCIPLINE
+You must:
+- read the actual file directly
+- go line by line
+- go function by function- go helper by helper
+- check the whole pipeline, not just parser functions
+- never assume provider rows are pre-sorted
+- never assume fallback logic is correct unless visibly implemented
+- never claim “0 uncaught bugs” unless you can truly defend it from the file
+- never inflate the bug count with speculation
+If you are uncertain about something but it is not a confirmed bug, do NOT count it. Put it in a
+separate section:
+“>1% uncertainty / clarification needed”
+PROVIDER PRIORITY RULE
+Audit under this exact provider rule:
+- best provider first
+- if unavailable, next best provider
+- then third best
+- then fourth best
+- continue through the full provider stack
+- if none can supply it, raw field should be NULL
+- do not fake precision
+- do not silently use the wrong concept as a fallback
+- if a fallback uses a different concept (for example weighted shares outstanding instead of
+float), count that as a bug
+PRECISION RULE
+For fields where precision materially affects:
+- hard floors
+- stacking
+- CCG
+- factor scoring
+- overrides
+- tiers
+- sizing
+- final composite“close enough” is NOT acceptable.
+For fields where the system genuinely allows a proxy or approximation, do not count it unless it
+violates the current documented workflow.
+RUN MODE
+Stay in AUDIT MODE only.
+Do NOT patch the file.
+Do NOT rewrite the architecture.
+Do NOT propose refactors unless they are required to fix a true bug.
+Do NOT switch to patching unless I explicitly ask for it.
+HOW TO START YOUR RESPONSE
+At the start of your response, first provide a short “Process” section explaining exactly how you
+are auditing,
+for example:
+- actual file only
+- line by line
+- function by function
+- helper by helper
+- true bugs only
+- duplicate handling
+- root-bug vs derivative-effect handling
+Then begin the audit results.
+OUTPUT FORMAT
+You must keep a continuous bug ledger.
+For each confirmed bug, provide:
+- Bug number
+- Scope (What section + downstream(
+- Function / helper / area
+- Severity
+- Exact code behavior
+- Exact system rule violated- Why it is a mismatch
+- Exact fix (code snippet or exact replacement block)
+You must also keep a running count:
+- total confirmed bugs in Section
+- bugs in Part 1
+- bugs in Part 2
+- bugs in Part 3
+If you find a bug that is already covered by a prior root bug, do NOT add a new count. Explicitly
+say:
+“Derivative of Bug X — not counted separately.
+”
+If you find something uncertain but not fully provable from the file, do NOT count it. Put it under:
+“>1% uncertainty / clarification needed”
+At the end of the pass, give:
+1. Current confirmed Section bug total
+2. Part 1 total
+3. Part 2 total
+4. Part 3 total
+5. Whether Section is:
+- not enumerated
+- fully enumerated
+- clean
+6. A completeness score from 1–100 relative to how much was actually scanned word by word
+7. The single best next action
+IMPORTANT COUNTING RULE
+Do NOT reset the bug count per section.
+Maintain one continuous Section 3 bug ledger across the entire audit.
+If you start with known bugs, verify whether they are still live in the actual file.
+Remove stale items if already fixed.
+Do not double count old bugs.
+Additionally, if you see bugs outside the section you’re auditing that are directly exposed while
+auditing that section, report them separately under:
+“Outside said section but confirmed during this audit”
+FINAL INSTRUCTIONS
+Be meticulous and exhaustive.
+Do not optimize for speed.
+Do not reassure me.
+Do not summarize vaguely.
+Only report what you can defend from the actual file and system rules.
+JUST TO ELABORATE:
+Audit the ACTUAL FILE only. Do not rely on prior summaries except as a seed ledger to verify.
+Task: Audit mentioned section of the script line by line, function by function, helper by
+helper.True bug definition:
+- any mismatch to system logic
+- any extraction mismatch
+- any wrong provider fallback order
+- any wrong date anchoring
+- any row-order/sorting assumption that can corrupt latest/current values
+- any NULL-policy violation
+- any dead code
+- any useless code that wastes time or API quota
+- any runtime bug
+- any logic that can distort gates, factor scores, composite, tier, or sizing
+Do NOT count:
+- manual-by-design fields
+- nullable-by-design fields
+- accepted approximations already locked as acceptable
+- derivative effects when a root bug already captures the issue
+Method:
+- actual file only
+- requested Section only
+- line by line
+- helper by helper
+- no memory shortcuts
+- no assumed provider ordering
+- no assumed correctness because a prior version was patched
+- keep one continuous Section bug ledger
+- remove stale bugs if already fixed in the actual file
+Provider rule:
+- best provider first
+- then second best
+- then third
+- continue through the provider stack
+- if unavailable at every provider, leave raw field NULL
+- do not silently use a different concept as fallback
+Output format:
+For each bug provide:
+- bug number
+- function/helper
+- severity
+- code behavior
+- violated system rule
+- why mismatch
+- exact fix
+Also provide:
+- Part 1 bug total
+- Part 2 bug total
+- Part 3 bug total
+- total Section bug count
+- completeness score 1–100
+- best next action
+ADDENDUM — WHOLE-SCRIPT ROADMAP FOR v52 (SECTIONS 1–10)
+Use this as the whole-script roadmap for the current file version: v52
+full
+extractor
+_
+_
+_
+data.py.
+This roadmap supersedes the old v18 line-map addendum.
+Function ownership controls.
+Grouped line blocks are convenience references only.
+If a later patch touches an earlier-owned function/helper/field/wiring area, earlier ownership wins
+and the release gate restarts from that earlier section.
+GLOBAL OWNERSHIP / RE-ENTRY RULES
+- The roadmap is dependency-ordered, not pure physical file order.
+- Patching a section will require reopening only that section plus its downstream sections.
+- Any touched function forces re-audit of its immediate downstream consumers..
+- Patch by dependency cluster / downstream rerun surface, not by convenience.
+- Do not infer coverage from nearby lines. Coverage must be recorded by exact function/helper
+reopened.
+SECTION-LEVEL RELEASE GATE RULE
+For any patched section:
+1. verify bug from actual current file
+2. patch copy-first from full actual prior file
+3. syntax check
+4. import check
+5. rerun touched section
+6. rerun listed downstream sections
+7. if Section owned surface was touched or implicated, rerun full Section gate
+8. then classify release state
+SECTION 1 — TRANSPORT / TOP-LEVEL SCHEMA / RAW PROVIDER ACCESS
+- Dependency stage: root transport layer
+- Physical blocks:
+- 1–223
+- 846–850
+- 2553–2560
+- Primary anchors:
+- import argparse
+-
+_
+http_get
+_json /
+_
+http_get
+text /
+_
+_
+http_get
+_
+bytes
+- provider wrappers: Alpaca / Massive / FMP / Finnhub / SEC
+- sec
+_get
+_
+filing_
+text
+- fred
+_get
+series
+_
+_
+observations
+- fmp_get
+cash
+flow
+ttm
+_
+_
+_
+- fmp_get
+income
+statement
+ttm
+_
+_
+_
+- Home ownership:
+- imports
+- global output schema
+- API base URLs / credentials placeholders
+- raw transport wrappers
+- top-level provider fetch functions
+- Exclusion rule:
+- no later extraction / scoring / orchestration logic is owned here
+- Downstream re-entry if touched:
+- Sections 2–10
+- Why:
+entire script
+- this section can change raw payloads, transport behavior, or schema assumptions for the
+SECTION 2 — SHARED STATE / GENERIC HELPERS / ROUTING / BAR-MATH
+FOUNDATION
+- Dependency stage: shared helper layer used by later extraction and scoring
+- Physical blocks:
+- 224–845
+- 851–871
+- 877–924
+- 949–1062
+- 2423–2524
+- 3377–3498
+- Primary anchors:
+-
+safe
+filename
+_
+_
+- snapshot / cache helpers
+- SEC 13F / options / revision snapshot infrastructure
+- statement-row sorting helpers
+- generic parse / cast / list / date helpers
+-
+_pct
+_
+change
+-
+sort
+bars
+_
+_
+_
+chronologically
+- SMA / HV / ADTV / ATR / breakout / up-down volume helpers
+-
+-
+-
+-
+_
+approx
+_
+trading_
+days
+_
+between
+fred
+_
+_
+10y_
+30d
+_
+change
+_
+bps
+start
+end
+for
+_
+_
+_
+_
+daily_
+bars
+safe
+call
+_
+_
+-
+_group_
+values /
+_quintile
+rank /
+_
+- regime-state helpers
+- peer-universe load / assert
+- exact trading-day helpers
+- 12-1 skip-month exact helper
+- preferred bar-series selection
+- factor-5 fallback threshold helper
+- max-position-by-tier helper
+- Home ownership:
+- generic infra
+sector
+medians /
+_
+_
+_
+merge
+_
+row
+- cached-state helpers
+- non-Section-3 bar math
+- regime / cohort / routing helpers used across later sections
+- Exclusion rule:
+- the reserved Section 3 helper anchors below are NOT owned here:
+-
+safe
+_
+_
+-
+bars
+_
+_
+_
+-
+bars
+div
+from
+from
+alpaca
+massive
+_
+_
+-
+extract
+_
+close
+_
+_
+from
+bar
+_
+_
+date
+-
+extract
+bar
+_
+_
+_
+- Downstream re-entry if touched:
+- Sections 3–10
+- Why:
+score path.
+- this is the main shared helper layer. A bug here can corrupt every downstream parser or
+SECTION 3 — EXTRACTION / SECTION 3 CROSS-CUTTING SPECIAL SURFACE
+- Dependency stage: core extraction and extraction-adjacent downstream exception
+- Controlling rule:
+- Section 3 is function-anchored and cross-cutting in v52
+- function anchors are authoritative
+- line ranges are convenience only
+- Home physical blocks:
+- 872–876
+- 925–948
+- 1072–1507
+- 2315–2422
+- 2561–3141
+- 3499–3888
+- Primary parser anchors:
+- parse
+_
+liquidity_
+and
+short
+_
+_
+section
+- parse
+_
+earnings
+and
+ear
+_
+_
+_
+section
+- parse
+valuation
+section
+_
+_
+- parse
+sec
+_
+_
+filing_
+section
+- parse
+manual
+review
+section
+_
+_
+_
+- parse
+audit
+section
+_
+_
+- parse
+_
+identity_
+section
+- parse
+_profitability_
+section
+- parse
+_
+solvency_
+section
+- parse
+_price
+and
+trend
+_
+_
+_
+section
+- parse
+_
+earnings
+_quality_
+section
+- parse
+insider
+section
+_
+_
+- Reserved / dependent helper ownership in v52:
+-
+safe
+div
+_
+_
+-
+bars
+from
+_
+_
+_
+alpaca
+-
+bars
+from
+massive
+_
+_
+_
+-
+extract
+close
+from
+bar
+_
+_
+_
+_
+-
+extract
+bar
+date
+_
+_
+_
+-
+extract
+cik
+from
+_
+_
+_
+_
+fmp
+-
+extract
+issuer
+_
+_
+_
+cusip
+-
+latest
+_
+_
+buy_
+identity_
+from
+_
+transactions
+-
+latest
+form4
+url
+from
+submissions
+_
+_
+_
+_
+_
+-
+-
+_provider
+_
+bool
+extract
+_
+_gics
+_
+4digit
+from
+_
+_
+sources
+-
+extract
+dual
+_
+_
+_
+listing_
+flag_
+from
+_
+sources
+-
+extract
+chinese
+adr
+_
+_
+_
+_
+flag_
+from
+_
+sources
+-
+extract
+_
+_
+spac
+_
+flag_
+from
+_
+sources
+-
+extract
+10b5
+1
+_
+_
+_
+_
+adoption
+_
+date
+-
+sum
+latest
+_
+_
+_quarters
+-
+extract
+next
+_
+_
+_
+earnings
+date
+from
+_
+_
+_
+calendar
+-
+extract
+last
+_
+_
+_
+earnings
+date
+from
+_
+_
+_payloads
+-
+_
+compute
+3d
+_
+_post
+_
+earnings
+return
+from
+_
+_
+_
+bars
+-
+_
+compute
+_
+trailing_
+return
+from
+_
+_
+bars
+-
+_
+compute
+_
+trailing_
+return
+from
+bars
+_
+_
+_
+anchored
+-
+finviz
+_
+_plain
+_
+text
+-
+_parse
+finviz
+metric
+_
+_
+_
+float
+- Additional owned wiring:
+- Section 3-related collect
+one
+_
+_
+ticker wiring inside collect
+one
+_
+_
+ticker
+- any per-ticker fetch / merge / handoff logic whose purpose is to feed the owned Section 3
+parsers above
+- Full Section 3 downstream reopen set when required by prompt or patch surface:
+- apply_
+stacking_
+rule
+- apply_
+ccg
+- score
+factor
+2
+_
+_
+- score
+factor
+4
+_
+_
+- score
+factor
+6
+_
+_
+- enrich
+cross
+section
+_
+_
+- apply_
+hard
+_
+floors
+- score
+factor
+1
+_
+_
+- score
+factor
+3
+_
+_
+- score
+factor
+5
+_
+_
+- score
+factor
+7
+_
+_
+-
+_
+apply_
+composite
+_
+core
+- apply_
+composite
+- apply_
+entry_portfolio
+_guards
+- score
+and
+finalize
+rows
+_
+_
+_
+- affected collect
+one
+_
+_
+ticker final wiring
+- Exclusion rule:
+- Section 3 does not own later sections globally
+- it only pulls downstream surfaces into scope when they consume or expose a true Section 3
+bug
+- Downstream re-entry if touched:
+- Section 4
+- Section 6
+- Section 7
+- Section 8
+- Section 9
+- Section 10
+- Why:
+- this is the extraction spine of the stock system and the highest-risk zone for provider
+semantics, date anchoring, row logic, and field-to-score distortion
+SECTION 4 — STACKING / CCG / FACTOR-UTILITY / TIER-SCAFFOLD LAYER
+- Dependency stage: first scoring scaffold after extraction
+- Physical blocks:
+- 1508–2037
+- Primary anchors:
+- hard-floor / stacking constants
+-
+normalize
+text
+-
+-
+_
+_
+_
+classify_
+chs
+_
+fallback
+result
+_
+_
+threshold
+for
+tier
+_
+_
+- apply_
+stacking_
+rule
+- apply_
+ccg
+- score
+factor
+2
+_
+_
+- score
+factor
+4
+_
+_
+- score
+factor
+6
+_
+_
+- solvency-band helpers
+- tier helpers
+- result-bucket / checkpoint-count helpers
+- Home ownership:
+- stacking-rule implementation
+- CCG implementation
+- factor 2 / 4 / 6 scoring
+- tier-floor / cap / sizing helper math
+- solvency band helper logic used before later finalization
+- Exclusion rule:
+- when auditing Section 3, these may be reopened as downstream consumers
+- that does NOT change their home ownership here
+- Downstream re-entry if touched:
+- Sections 8–10
+- plus full Section 3 rerun if the touched path consumes or exposes a Section 3-owned field
+mismatch
+- Why:
+- this layer is where extraction outputs first become gates, factors, or tier math
+SECTION 5 — CHECKPOINT / SCHEMA LOCK / SMOKE / CLI / RUN PREP INFRA
+- Dependency stage: run-control infrastructure
+- Physical blocks:
+- 2043–2306
+- Primary anchors:
+- prepare
+row
+for
+_
+_
+_persist
+- checkpoint init / save / summary helpers
+- schema check / schema lock
+- provider preflight summary
+- smoke validation
+- CSV writers
+- prepare
+run
+_
+- finalize
+run
+_
+- Home ownership:
+- persistence
+- smoke/run gating
+- output writing infra
+- checkpoint integrity
+- Exclusion rule:
+- does not own per-ticker extraction wiring
+- does not own final scoring logic
+- Downstream re-entry if touched:
+- Sections 9–10
+- Why:
+- this section controls run integrity, release-chain integrity, and output persistence
+SECTION 6 — CROSS-SECTION ENRICHMENT LAYER
+- Dependency stage: post-extraction, pre-factor cohort layer
+- Physical blocks:
+- 3889–4179
+- Primary anchors:
+- enrich
+cross
+section
+_
+_
+- Home ownership:
+- sector medians
+- peer / cohort benchmark assignments
+- valuation soft-flag aggregation inputs
+- 24-month underperformance benchmark construction
+- cross-row enrichment before hard floors / factor scoring / composite
+- Exclusion rule:
+- does not own the extraction fields it consumes
+- does not own the later hard-floor / factor scorers that read its outputs
+- Downstream re-entry if touched:
+- Sections 7–10
+- plus full Section 3 rerun if the patch changes interpretation of a Section 3-owned field used
+here
+- Why:
+- this is the bridge between raw per-ticker extraction and comparative scoring logic
+SECTION 7 — HARD FLOORS + CORE FACTOR-SCORING LAYER
+- Dependency stage: final eligibility and raw factor-score construction
+- Physical blocks:
+- 3142–3304
+- 4180–4486
+- Primary anchors:
+- score
+factor
+3
+_
+_
+- score
+factor
+7
+_
+- apply_
+hard
+_
+floors
+- score
+_
+factor
+1
+_
+_
+- score
+factor
+5
+_
+_
+- Home ownership:
+- factor 1 / 3 / 5 / 7 scoring
+- hard floors
+- operative elimination logic
+- raw and adjusted scores for these factors
+- Exclusion rule:
+- composite assembly is not owned here
+- entry/portfolio guards are not owned here
+- Downstream re-entry if touched:
+- Sections 8–10
+- plus full Section 3 rerun if the touched path uses or reinterprets Section 3-owned fields
+- Why:
+- this layer directly determines elimination risk and weighted score inputs
+SECTION 8 — COMPOSITE / SIZING / ENTRY-GUARD / FINAL ROW SCORING LAYER
+- Dependency stage: final decision engine
+- Physical blocks:
+- 4487–4832
+- Primary anchors:
+-
+_
+apply_
+composite
+_
+- apply_
+composite
+-
+_
+append
+manual
+_
+_
+core
+note
+-
+_
+recompute
+_position
+_
+sizing_
+from
+final
+_
+_
+tier
+-
+eliminate
+via
+_
+_
+_portfolio
+_guard
+- apply_
+entry_portfolio
+_guards
+-
+_
+apply_
+chs
+cross
+_
+_
+section
+- score
+and
+finalize
+rows
+_
+_
+_
+- Home ownership:
+- composite assembly
+- deductions and overrides application
+- final tier
+- final position size
+- entry / portfolio guard enforcement
+- full-row finalization pass
+- Exclusion rule:
+- per-ticker collection/fetch wiring is not owned here
+- Downstream re-entry if touched:
+- Sections 9–10
+- plus full Section 3 rerun if any touched logic consumes Section 3-owned fields in a changed
+way
+- Why:
+- this is the last operative decision layer before per-ticker / full-run orchestration
+SECTION 9 — PER-TICKER COLLECTION / MERGE / HANDOFF ORCHESTRATION
+- Dependency stage: end-to-end per-ticker execution layer
+- Physical blocks:
+- 4833–5004
+- Primary anchors:
+- collect
+one
+ticker
+_
+_
+- Home ownership:
+- per-ticker fetch plan
+- per-ticker merge order
+- parser call order
+- per-ticker handoff into final scoring/finalization
+- Exclusion rule:
+- Section 3-related collect
+one
+_
+_
+ticker wiring remains Section 3-owned
+- if a collect
+one
+_
+_
+ticker patch touches Section 3-owned fetch/merge/handoff logic, Section 3
+takes precedence and must be reopened first
+- Downstream re-entry if touched:
+- Section 10
+- plus any earlier owned sections whose call chain was edited
+- Why:
+- this is the live wiring surface where provider fetches, parser outputs, enrichment, and
+finalization meet
+SECTION 10 — TOP-LEVEL RUN WRAPPER
+- Dependency stage: final outer shell
+- Physical blocks:
+- 3305–3328
+- Primary anchors:
+- main
+- Home ownership:
+- top-level script entrypoint
+- full-run wrapper
+- Exclusion rule:
+- helper and orchestration ownership remains in prior sections
+- Downstream re-entry if touched:
+- none by section number
+- but any edited caller/callee relationship forces reopening of the called owned section(s)
+- Why:
+- this is the final execution shell, not the place where business logic should live
+DOWNSTREAM RE-ENTRY MATRIX
+- Patch Section 1:
+- reopen Sections 2–10
+- Patch Section 2:
+- reopen Sections 3–10
+- Patch Section 3:
+- reopen Sections 4, 6, 7, 8, 9, 10
+- and run the full Section 3 downstream reopen set listed above
+- Patch Section 4:
+- reopen Sections 7, 8, 9, 10
+- if the touched path consumes or reinterprets Section 3-owned fields, rerun full Section 3 gate
+too
+- Patch Section 5:
+- reopen Sections 9, 10
+- and any directly touched caller/callee chains
+- Patch Section 6:
+- reopen Sections 7, 8, 9, 10
+- if a Section 3-owned input meaning changes, rerun full Section 3 gate too
+- Patch Section 7:
+- reopen Sections 8, 9, 10
+- if a touched scorer depends on Section 3-owned field semantics, rerun full Section 3 gate too
+- Patch Section 8:
+- reopen Sections 9, 10
+- if composite/guard logic changes interpretation of Section 3-owned fields, rerun full Section 3
+gate too
+- Patch Section 9:
+- reopen Section 10
+- and reopen any earlier owned sections whose collect
+one
+_
+_
+ticker call chain or merge path
+was edited
+- Patch Section 10:
+- rerun Section 10
+- and reopen any earlier owned section whose entrypoint / caller linkage was edited
+ANTI-BACKTRACK RULE FOR THIS ROADMAP
+- Do not jump backward just because the file is physically interleaved.
+- Jump backward only if the patch crossed an ownership boundary.
+- Ownership boundary test:
+- Did I edit a function/helper/field/wiring area whose home section is earlier than the section I
+thought I was patching?
+- If yes, earlier section takes control and the release gate restarts from there.
+- This is how prior-section regressions are prevented without fake “one pass and done” claims.
+SECTION 3 SPECIAL NOTE FOR FUTURE HANDOFFS
+- Section 3 in v52 is not the old single v18 line block.
+- It is function-anchored and non-contiguous.
+- Function ownership controls.
+- Exact reopened-function scan coverage is required each pass.
+- Do not call Section 3 fully enumerated, clean, release-ready, or 100%-clean unless that full
+current-pass function surface was actually reopened.
+END OF v52 ROADMAP
