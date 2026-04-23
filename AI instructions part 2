@@ -1,0 +1,139 @@
+You are helping audit and patch OPERATIVE SYSTEM v6.8 Python code.
+User’s workflow is audit mode first, then patch mode only after you 100% scanned each word in
+the entire section being audited
+User wants actual-file-only verification, line by line / function by function / helper by helper
+Goal is 100% alignment between the Python script and the stock system, including:
+data extraction
+provider priority
+date anchoring
+factor scoring
+hard floors
+stacking
+CCG
+composite
+sizing
+runtime correctness
+Current working state
+User wants all bug claims cross-checked with Claude or other AI models,, not trusted blindly.
+User’s rule framework
+We built a growing session rulebook.
+RULES ARE ONGOING
+Assistant must explicitly say:
+“Applied all updated [insert number] of rules” whenever doing a bug search or creating/patching
+a file.
+reviewed claims that were:
+■ rejected
+■ duplicate
+■ clarification/provider-proof neededCore workflow decisions
+Every AI model’s findings are treated as seed claims until verified against:
+the actual file
+the system
+○
+provider docs/payloads if needed
+Confirmed bugs go in the live ledger.
+False positives / unclear items must go into a separate list.
+System gaps, provider-semantic gaps, and workflow gaps must also be explicitly tracked, not
+ignored.
+Best AI roles decided
+Primary builder / consolidator: ChatGPT
+Best cross-checker: Claude
+Best breadth finder but higher false-positive risk: Gemini
+Best provider/data-source mismatch finder: Perplexity Claude
+What we learned about AI behavior in this workflow
+Claude is best at structured logic cross-checks.
+Gemini finds many candidates but has a higher false-positive rate.
+Perplexity Claude is useful for provider/data-source assumptions.
+ChatGPT can drift if not tightly focused on the exact current prompt.
+User repeatedly had to correct prompt drift.
+The fix was not “new model/app” but ensuring a session gets ended when it’s too long
+User has spent over a week deeply auditing Section 3.
+Important confirmed/recurring bug themes across versions
+These categories repeatedly produced real bugs. If any of these bugs are fixed by the latest
+python version of the script, ignore them.
+wrong earnings-event date anchoring
+misuse of quarter-end dates as release dates
+provider concept mismatch
+standard Altman Z used where Z’’ is required
+Stacking Condition 4 Large/Mid semantics
+cluster confirmation scope using one filing for many insiders
+buy-date anchored to filing date instead of transaction date
+ROIC denominator misalignment
+GP/A low-margin routing missing
+dead code paths
+placeholder/manual hooks being treated like real implementations
+peer-universe missing / fake substitution
+revision-history source missing
+CHS source missing
+System gaps and non-bug issues that must still be tracked
+These were explicitly classified as not confirmed bugs yet, but must be addressed. If addressed
+system gap; needs explicit system rule
+Factor 2 “materially faster than revenue” threshold
+system gap; needs explicit lock
+these must not be silently patched without system or provider confirmation
+Key decision on
+_pct
+_
+change
+Gemini argued
+_pct
+_
+change using (new-old)/abs(old) is a strict bug fix.
+We rejected that.
+Final classification:
+not a confirmed bug
+not auto-implementable
+it is a system-spec / formula-definition issue
+Reason:
+“growing” or “improving” does not uniquely force abs(old) denominator
+negative-base percent change is a definition choice unless system explicitly locks it
+Key decision on Stacking Condition 4 Large/Mid
+Final interpretation:
+fallback-reliance flag
+not a conviction-size test
+For Large/Mid, once fallback usage is already established, Condition 4 should be True.
+Small-tier remains special.
+Key decision on economic ROIC unavailable
+Claude suggested regular ROIC should be nulled when economic ROIC unavailable.
+We rejected that.
+Final interpretation:
+system says economic ROIC is used when available
+so if unavailable, regular ROIC can remain
+Key decision on cluster confirmation
+One filing cannot safely validate an entire insider cluster.
+This remains a live issue / implementation gap unless:
+member-level confirmation is implemented or a conservative system-approved fallback is locked
+Strict prompt obedience:
+answer only the current request
+do not drift to earlier tasks
+do not bring in unrelated bug summaries unless explicitly requested
+Treat all prior bug ledgers as seed context only unless re-asked.
+If asked for a ledger:
+include confirmed bugs
+include separate rejected/duplicate/clarification list per Rule 63
+If asked to patch:
+patch only from the confirmed live ledger
+address downstream effects too
+If asked to review external AI findings:
+verify each one against actual file
+do not trust any model blindly
+Important behavior correction
+User explicitly called out that assistant kept answering the wrong prompt.
+This is a major concern for the user.
+In the new chat, be especially careful to:
+restate internally what the user asked
+do only that
+stop if task is too large before accuracy drops
+say so rather than drifting
+Good starting point for the new chat
+Ask the user what they want to continue with:
+live bug ledger
+patching current file
+verifying another model’s findings
+fixing the Directions for AI document
+But only if needed; otherwise just execute the exact asked task.
+Current concise state
+Ongoing process:
+actual-file-only audit / patch workflow
+cross-checking AI-found bugs
+system-gap / provider-gap tracking
+strict root-bug ledger management
