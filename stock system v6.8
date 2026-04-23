@@ -1,0 +1,1292 @@
+	OPERATIVE SYSTEM v6.8
+STOCK-PICKING SYSTEM v6.8
+CORE LOGIC
+Edge = executive conviction and quality alignment at businesses the market has begun to
+re-rate, sized by the weight of evidence.
+Order of operations: Insiders → Quality → Momentum → Valuation
+Momentum-Dependent Entry: an entry is momentum-dependent when setting the momentum
+factor score to zero would cause the final composite — after all regime deductions — to fall
+below the tier floor corresponding to the composite score before zeroing momentum. Complete
+full scoring first, then apply this test retrospectively before finalizing override applications.
+Document in journal.
+HARD FLOORS — ELIMINATE BEFORE SCORING
+Floor 1: CHS bottom decile OR Altman below 1.81 (capital-intensive).
+Financials/REITs/utilities/asset-light tech: CHS only. If CHS unavailable and Altman inapplicable:
+Piotroski ≤3 = hard floor. Document model used.
+Floor 2: Negative FCF three or more consecutive years with no documented path to positive
+FCF.
+Floor 3: Price more than 30% below 200SMA.
+[C24 — Legend removed. C11,C12,C13,C14 — market cap, ADTV, bid-ask, analyst coverage
+updated below]
+|Condition |Threshold
+|
+|--------------------------|----------------------------------------------------------------------------------------------------
+------------------------------------------------------------|
+|Market cap |<$50M. Tiers: Large ≥$750M (standard). Mid $200–750M (Tier C max,
+modified rules). Small $50–200M (1% hard cap, enhanced substitutions). Document tier at
+entry.|
+|ADTV |Large: $5M floor. Mid: $1M floor. Small: $300K floor. All tiers: min ADTV =
+20× max position size. |
+|Position-to-ADTV |Large/Mid: >5% flag. Small: >3% flag.
+|
+|Bid-ask spread |Large: >0.20%. Mid: >0.35%. Small: >0.75%.
+|Analyst coverage |Mid tier: minimum 2 analysts. Small tier: none required — EAR scored
+neutral if zero analysts. |
+|P/S |>30× SaaS/high-growth
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|CEO/CFO self-sale |Within 90 days of own buy
+|Insider buy |Followed by secondary offering
+|Correlation |120-day >0.65 to top-3 holding (>0.55 crash flag)
+|SPAC/no operating business|Any
+|Chinese ADR |Without dual listing + Piotroski ≥8 + FCF yield top 10% of sector
+|DTC |>15 days. Short squeeze framing explicitly prohibited as override.
+|Piotroski |≤3 for non-REIT non-financial companies
+|Stacking rule |3+ simultaneous high-impact conditions (see below)
+ADR Rule: Dual listing required OR individual non-dual-listed ADR capped 3%. Total ADR
+≤10%. Chinese ADR ≤5%.
+Stacking Rule — 8 High-Impact Negative Conditions (eliminate if 3+ present):
+1. DTC 7–15 days
+2. SI% >20% without confirmed cluster buy
+3. Realized volatility >40%
+4. Holdings unverified (fallback used) [C21 — see tier thresholds below]
+5. Insider signal age 120–240 days
+6. Earnings quality cumulative −2 or worse
+7. Altman/CHS or Altman/Piotroski conflict unresolved. Small tier: Altman below 2.0
+with CHS unavailable = one stacking condition.
+8. Price 15–30% below 200SMA
+[C21] Stacking Condition 1 (DTC 7–15 days) waived if DTC independence check confirms
+elevation solely due to ADTV contraction. Document waiver.
+Stacking Condition 4 — Large/Mid tier: $500K/$250K fallback used. Small tier: applies only
+when holdings completely unverifiable AND purchase below $50K.
+CORE CONVICTION GATE
+Goal: Compute a secondary 4-factor score using the four strongest peer-reviewed predictors of
+6–12 month forward returns (Price Momentum, Profitability, Earnings Quality, Post-Earnings
+Drift), each using v6.7 adjusted implementations. A stock must score ≥60/100 on this gate
+before composite scoring determines tier eligibility. A stock failing this gate is ineligible for entry
+regardless of composite score. Threshold of 60 is provisional — live pilot review at 20 positions.
+Document gate result in journal.
+This gate applies to all new entries including re-entries and watchlist-triggered entries. This gate
+applies to swing trades and long-term entries without exception.
+EAR exemption trigger: If Factor 4 would be scored neutral (4) under v6.7 due to expiry beyond
+63 trading days OR insufficient analyst coverage per v6.7 tier rules, EAR is gate-exempt and the
+gate reweights equally across the remaining three factors. Document: “EAR gate-exempt —
+3-factor gate applied.
+”
+4-factor gate (EAR active):
+|Factor |Adjusted Score|Weight|Weighted|
+|---------------------------------------|--------------|------|--------|
+|Momentum (Factor 1 adjusted) |___ |×0.25 |___ |
+|Profitability (Factor 3 adjusted) |___ |×0.25 |___ |
+|Earnings Quality (Factor 2 adjusted) |___ |×0.25 |___ |
+|Post-Earnings Drift (Factor 4 adjusted)|___ |×0.25 |___ |
+|Sum × 10 = Core Conviction Score | | |___
+/100 |
+3-factor gate (EAR exempt):
+|Factor |Adjusted Score|Weight|Weighted|
+|------------------------------------|--------------|------|--------|
+|Momentum (Factor 1 adjusted) |___ |×1/3 |___ |
+|Profitability (Factor 3 adjusted) |___ |×1/3 |___ |
+|Earnings Quality (Factor 2 adjusted)|___ |×1/3 |___ |
+|Sum × 10 = Core Conviction Score | | |___
+/100 |
+If Core Conviction Score ≥60: proceed to composite scoring and tier assignment.
+If Core Conviction Score <60: ineligible — document “failed core conviction gate” and stop.
+All existing factor weights, regime deductions, tier assignments, overrides, and sizing rules
+remain unchanged. Eligibility is now conditional on passing this gate. The eligible universe
+narrows but all downstream scoring logic is unaffected.
+TIER CAP OVERRIDES
+[C19 — tier notes added]
+|Override|Condition |Result
+|
+|--------|----------------------------------------------------------------------------------|-----------------------------------
+--------------------------------|
+|1 |Holdings unverified (fallback used) |Tier C max. Small tier:
+1% max. |
+|2 |MTUM/VTV cap active |Composite >79 capped at
+79 for momentum-dependent entries |
+|3 |Soft crash flag + insider score <7 before modifiers |Tier C max. Small
+tier: 1% max. |
+|4a |Full crash flag: price NOT within 5% of 52wk high AND NOT top 10% sector momentum
+|Eliminate |
+|4b |Soft crash flag: price NOT within 10% of 52wk high AND NOT top 20% sector
+momentum|Tier C cap. Small tier: 1% cap. |
+|5 |Price below 200SMA |Tier C cap for any Tier B or
+Tier A assignment. Small tier: 1% cap.|
+|— |Mid tier maximum |Tier C regardless of
+composite |
+|— |Small tier maximum |1% hard cap regardless of
+composite or override result |
+COMPOSITE SCORING
+[C29 — consolidated data sources]
+Data sources: TIKR (ROIC, EV/EBITDA, solvency). Finviz (PEG, revision data). OpenInsider
+(insider signals). TradingView (HV, price data). FRED (HY OAS). Sector ETFs per Factor 1 list.
+Factor Weights [C1 — PED 10%, Profitability 20%]
+|Factor |Weight|
+|-------------------|------|
+|Price Momentum |25% |
+|Earnings Quality |20% |
+|Profitability |20% |
+|Post-Earnings Drift|10% |
+|Insider Signal |15% |
+|Valuation |5% |
+|Solvency |5% |
+Factor 1 — Price Momentum (×0.25)
+|Condition |Score |
+|----------------------------------------------------------------------------|----------|
+|Price >15% above 200SMA, 12-1 rank top quintile, sector ETF above own 200SMA|10 |
+|Price >10% above 200SMA, top two quintiles, sector ETF above 200SMA |8 |
+|Price >5% above 200SMA, top three quintiles, sector ETF above 200SMA |6 |
+|Price 0–5% above 200SMA |4 |
+|Price 0–15% below 200SMA |2 |
+|Price 15–30% below 200SMA |1 |
+|Price >30% below 200SMA |Hard floor|
+Modifiers (min 0, max 10): [C2 — low-vol rows added]
+|Modifier |Adjustment|
+|----------------------------------------------------|----------|
+|Sector ETF below own 200SMA |−1 |
+|Golden cross (50SMA above 200SMA) |+0.5 |
+|Death cross (50SMA below 200SMA) |−0.5 |
+|Breakout >1.5× average volume on entry/signal day |+0.5 |
+|Up-day volume > down-day volume trailing 20 sessions|+0.5 |
+|Down-day volume > up-day volume trailing 20 sessions|−0.5 |
+|30-day realized HV below sector median |+0.5 |
+|30-day realized HV above 2× sector median |−0.5 |
+Sector ETFs: XLK (Tech), XLV (Healthcare), XLF (Financials), XLY (Consumer Disc), XLP
+(Consumer Staples), XLE (Energy), XLI (Industrials), XLB (Materials), XLRE (Real Estate), XLU
+(Utilities), XLC (Communication). Do not substitute thematic ETFs.
+[C15] 12-1 Skip-Month: Month-end close 13 calendar months ago to month-end close 1
+calendar month ago. Large tier: rank within GICS 4-digit peer group. Mid tier: minimum 3 peers
+— below 3, use sector ETF relative performance. Small tier: minimum 2 peers — below 2, use
+sector ETF relative performance. If sector ETF not representative (fewer than 5 companies in
+sector ETF matching business model): use Russell 2000 as tertiary fallback. Document fallback
+used Document peer count and method used.
+Bear Rally Constraint: When HY OAS widened >150bps over prior 60 days, require 52-week
+high achieved within last 4 months for any momentum score above 6.
+Factor 2 — Earnings Quality (×0.20)
+|Condition |Score|
+|---------------------------------------------------------|-----|
+|Sloan below 3%, OCF/NI above 1.0×
+, no soft flags |10 |
+|Sloan 3–5% (tech) or 3–8% (other), OCF/NI 0.8–1.0×
+, clean|8 |
+|Sloan at sector threshold, OCF/NI 0.6–0.8×
+, one soft flag|5 |
+|Sloan above sector threshold |2 |
+|Multiple simultaneous failures |1 |
+Soft flag deductions applied to base row score. Minimum score = 0.
+|Sector |Hard Fail |
+|-------------------------|----------------------------------------------------------------------------|
+|Software/Tech/Asset-light|>5% |
+|Capital-intensive |>8%; require lowest tertile GICS 4-digit peer group for quality
+confirmation|
+|All other |>8% |
+Formula: (Net Income − CFO) / Average Total Assets. Average = (beginning + ending assets) / 2
+annual. Major mid-year acquisitions: four-quarter average — document method. Compute from
+balance sheet directly. No provider calculations.
+|Sector |OCF Threshold |
+|--------------------|----------------------------------|
+|Technology/Software |OCF ≥70% of net income |
+|REITs/MLPs/Utilities|OCF/Revenue >15% or FFO equivalent|
+|All other |OCF ≥85% of net income |
+When net income is negative: substitute OCF/Revenue vs sector median. OCF/Revenue above
+sector median = threshold met. OCF/Revenue below sector median = threshold not met.
+Document: “Negative NI — OCF/Revenue substituted.
+”
+Revenue vs Earnings Divergence: Earnings growing faster than revenue 2+ consecutive
+quarters without documentable gross margin improvement = −2 to earnings quality score. The
+−2 deduction is subject to the same minimum score of 0 as soft flag deductions.
+Soft Flags — Each −0.5:
+∙
+ETR decline >5pp QoQ without disclosed reason
+∙
+AR or inventory growing materially faster than revenue
+∙
+∙
+∙
+Asset growth >20% YoY without corresponding revenue/earnings growth
+Net dilution >3% annually
+Persistent OCF/NI divergence without sector explanation
+Cumulative Score: 0 = strong.
+factor calculation.
+−1 = soft.
+−2 or worse = standalone −5 composite deduction after
+Factor 3 — Profitability (×0.20) [C1]
+|Condition |Score|
+|------------------------------------------------------------|-----|
+|ROIC top quartile of sector, ROIC − WACC >5% |10 |
+|ROIC top tercile, ROIC − WACC positive |8 |
+|ROIC above sector median, ROIC − WACC negative but improving|5 |
+|ROIC below sector median but positive, trending stable |3 |
+|ROIC below 10% and below sector median |1 |
+|Modifier |Adjustment|
+|---------------------------------------------------|----------|
+|ROIC trending improving 2+ consecutive quarters |+0.5 |
+|ROIC trending deteriorating 2+ consecutive quarters|−0.5 |
+|Persistent FCF/NI below 0.6 |−1 |
+ROIC: TIKR primary. If blank: NOPAT = EBIT × (1 − effective tax rate); Invested Capital = total
+equity + total debt − cash. Same source for all comparisons. Document source.
+SBC Adjustment: SBC >5% of revenue = economic ROIC. TIKR Economic ROIC field when
+available.
+Financial Sector Substitution: Banks: ROE >12% AND NIM trend stable or improving. Asset
+managers/BDCs: FRE growth >10% YoY. Document metric and NIM trend.
+FCF: Positive ≥3 of last 4 years. [C7 — FCF yield guidance removed]
+WACC: TIKR primary. If blank: skip ROIC − WACC check — cap profitability factor score at 8
+regardless of ROIC quartile ranking. Document “WACC unavailable.
+”
+Factor 4 — Post-Earnings Drift / EAR (×0.10) [C1]
+EAR = cumulative [-1, 0,
++1] abnormal return vs sector ETF (use same sector ETFs defined in
+Factor 1). Positive = cumulative 3-day abnormal return >0%. Document sector ETF used.
+[C16] Mid tier with fewer than 2 analyst estimates: score EAR neutral (4). Small tier with zero
+analyst estimates: score EAR neutral (4). Document: “Insufficient analyst coverage — EAR
+scored neutral.
+”
+|Condition |Score |
+|-------------------------------------------------------------------|----------------------------------------------|
+|EAR above +5%, revenue beat confirmed, within 30 trading days |10
+|
+|
+|
+|EAR above +3%, revenue beat confirmed, within 45 trading days |8
+|EAR positive (0–3%), revenue beat confirmed, within 63 trading days|6
+|EAR positive (0–3%), revenue miss, within 63 trading days |5 |
+|EAR neutral or expired (beyond 63 trading days) |4 — record “neutral/expired,
+” do
+not recompute|
+|EAR negative |1 |
+EAR above 6 requires revenue beat confirmed. EPS beat with revenue miss = maximum 5.
+[C3 — Revision Momentum replaces Revision Acceleration]
+Revision Momentum: Net analyst revisions positive ≥5% AND majority revising upward over
+rolling 3 months = +1 (max 10). Net analyst revisions negative ≥5% AND majority revising
+downward over rolling 3 months = −1 (min 0). Flat or mixed = no adjustment. Document revision
+direction and source. Revision momentum modifier skipped when fewer than 2 analysts revising
+— document.
+Factor 5 — Insider Signal (×0.15)
+Run OpenInsider first. First filter, not last.
+[C17 — new small tier row added, holdings fallback tiered]
+|Condition |Score|
+|-------------------------------------------------------------------------------------------------------------------------|-----
+|
+|Cluster buy ≥3 insiders buying independently within 30 days, open market confirmed,
+CEO/CFO included, not 10b5-1 |10 |
+|Cluster buy ≥2 insiders buying independently within 60 days, open market confirmed,
+CEO/CFO included |9 |
+|CEO/CFO open-market buy ≥1% of holdings following ≥20% drawdown, ROIC top quartile,
+open market confirmed |9 |
+|Cluster buy ≥2 directors buying independently within 60 days, open market confirmed
+|7 |
+|Single CEO/CFO open-market buy ≥1% of holdings, within 120 days
+|6 |
+|Single CEO/CFO open-market buy ≥$100K, market cap $50–200M (small tier only), within 120
+days, open market confirmed |5 |
+|Single director open-market buy ≥1% of holdings, within 120 days
+|4 |
+|Single director open-market buy (holdings unverifiable — see fallback thresholds), within 120
+days, open market confirmed|3 |
+|No qualifying signal |0 |
+Holdings fallback thresholds by tier: Large ≥$750M = $500K. Mid $200–750M = $250K. Small
+$50–200M = $100K. Holdings unverified → Override 1 applies. Journal “holdings unverified.
+”
+Modifiers: [C6 — NSS row removed. C4 — thin coverage row added.]
+|Modifier
+|Adjustment |
+|-------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------|-----------------------------------------------------------|
+|Signal age 120–240 days
+|−2 |
+|Signal age beyond 240 days
+|Score 0 |
+|10b5-1 pre-reform or unverifiable
+|−3, cap adjusted score at 4 |
+|10b5-1 post-reform confirmed
+|−1 |
+|Holdings unverified (fallback used)
+|−1 |
+|SI% >20% at time of insider’s filing without cluster buy. Small tier only: before applying −2,
+verify SI% not elevated solely due to low float or ADTV contraction. If DTC independence check
+confirms mechanical elevation: reduce penalty to −1. Document ‘SI% mechanically elevated —
+low float adjustment applied.
+|−2 |
+|Insider buy within 10 trading days of earnings
+|−1 |
+|Institutional convergence ≥2 high-conviction holders initiating or adding ≥20% per 13F same
+quarter: within 90 days of quarter-end = +1; 91–180 days = +0.5; beyond 180 days =
+0|+1/+0.5/0 (max 10) This translates to 1% float |
+|Options flow >2× average daily call volume alongside qualifying buy
+|+0.5 (max 10) |
+|SI% >10% AND confirmed catalyst AND SI trending down
+|+1 swing entries only |
+|SI trending down over past 30 days without SI >10%
+|+0.5 |
+|TTM insider buy dollar value <10% of TTM net share dilution when dilution >3%
+|−2. Document “insider buy materially outpaced by dilution.
+”|
+|Fewer than 3 analysts covering stock AND CEO/CFO open-market cluster buy
+|+0.5 (max 10) |
+Rules 91 and 97 apply independently and cumulatively. The −2 penalty (SI% >20%) is not offset
+by the +1 modifier (SI trending down) or by cluster buy classification. All penalties and bonuses
+summed — they do not cancel.
+10b5-1 Tiebreaker: If adoption date unconfirmable from EDGAR, treat as pre-reform — subtract
+3 and cap at 4. Document “plan regime unverifiable.
+”
+CEO/CFO Drawdown Rule: CEO/CFO open-market buy following ≥20% price decline from prior
+peak in ROIC top-quartile stock = score 9. Soft crash flag cluster requirement waived.
+Document “CEO/CFO drawdown buy — cluster waiver applied.
+”
+24-Month Sector Underperformance: ≥15% annualized underperformance = −3 to insider signal
+score. Minimum score 1 if a qualifying signal exists. Score 0 only if no qualifying signal exists
+independently of this rule. Reference date: entry date if signal >60 days old; filing date if ≤60
+days. Benchmark: GICS 4-digit peer median primary (≥5 qualifying peers); sector ETF fallback.
+Document peer count, benchmark, reference date.
+Hard Fails (eliminate regardless of composite):
+∙
+CEO/CFO self-sale within 90 days of own buy
+∙
+Insider buy followed by secondary offering
+Insider buy within 5% of 52-week high during active crash flag: Document as elevated
+conviction note. No automatic score impact.
+Factor 6 — Valuation (×0.05)
+|Condition |Score|
+|----------------------------------------------------------------------|-----|
+|PEG below 1.0, EV/EBITDA below sector median, GP/A above sector median|10 |
+|PEG 1.0–1.5, EV/EBITDA at or below sector median |8 |
+|PEG 1.5–2.0, EV/EBITDA up to 1.5× sector median |6 |
+|PEG 2.0–2.5, EV/EBITDA 1.5–2.0× sector median |4 |
+|PEG above 2.5 or EV/EBITDA above 2× sector median |2 |
+[C18] PEG: Forward P/E (NTM consensus EPS) ÷ 5-year consensus EPS growth rate. Finviz
+primary. No trailing P/E. Document source. Mid tier with fewer than 2 analyst estimates: skip
+PEG, use EV/EBITDA only — below sector median = 8, at median = 6, above median = 4. Small
+tier: default to EV/EBITDA only unless estimates clearly available. Document method used.
+EV/EBITDA Sector Median: TIKR primary. Same source all comparisons. Document source.
+GP/A: (Revenue − COGS) / Total Assets. Above sector median = +0.5. Sectors with gross
+margin <35%: benchmark against sector-peer median. If COGS unavailable: skip and
+document.
+Net Cash: Net cash positive (cash exceeds total debt) = +0.5.
+Composite Valuation Soft Flag: Two or more metrics simultaneously in upper half of acceptable
+range (PEG 1.5–2.5, EV/EBITDA 1.5–2.0× sector median, P/S above sector median but below
+ceiling) = −1.
+Net Debt/EBITDA: Above 4× = −1 unless sector-normal (utilities, REITs — document explicitly).
+For non-SaaS sectors, P/S >3× sector median constitutes a soft flag contribution toward the
+composite valuation soft flag if not already triggered by other valuation metrics. Document P/S
+vs sector median.
+Factor 7 — Solvency (×0.05)
+For REITs/financials in CHS-only solvency paths:
+•
+CHS fail = hard fail.
+•
+CHS pass + Piotroski 7+ = raw solvency 8.
+•
+CHS pass + Piotroski 4–6 + qualifying weakness confirmed from
+asset-turnover/current-ratio components not captured elsewhere = raw solvency 5.
+•
+CHS pass + Piotroski 4–6 + breakdown unavailable = raw solvency 5,
+documented as conservative reduction.
+•
+CHS pass + Piotroski 4–6 + no qualifying weakness confirmation = raw solvency
+8.
+•
+Piotroski ≤3 = soft flag; adjusted solvency score capped at 5.
+[C22 — solvency model by tier noted in instruction below table]
+|Condition |Score |
+|-----------------------------------------------------------------------------------------------------------------------------|-
+---------|
+|CHS not in distress decile, Altman above 2.99, Piotroski 8–9
+|10 |
+|CHS not in distress decile, Altman inapplicable (financials/REITs/utilities/asset-light tech —
+document sector): Piotroski 7+|8 |
+|CHS not in distress decile, Altman inapplicable: Piotroski 5–6
+|5 |
+|CHS not in distress decile, Altman inapplicable: Piotroski 4
+|2 |
+|Altman 2.67–2.99, Piotroski 7 |8
+|
+|
+|
+|Altman 2.0–2.67, Piotroski 5–6 |5
+|Altman below 2.0, Piotroski 4 |2
+|CHS bottom decile or Altman below 1.81
+|Hard floor|
+Maximum solvency score for CHS-only sectors is 8.
+When Altman and Piotroski qualify for different row bands, score at the lower implied row.
+Document which component drove the lower score.
+|Modifier |Adjustment |
+|-------------|-----------------|
+|DTC 7–15 days|−1 |
+|DTC 3–7 days |Journal note only|
+CHS model by tier: Large tier — CHS primary, Altman secondary. Mid tier — CHS if available,
+Altman if not. Small tier — Altman primary; CHS used as confirmatory only if available.
+Document “small tier — Altman primary” at every small tier entry.
+Altman Model Variant: Original 1968 (thresholds 2.99/2.67/1.81) for
+manufacturing/capital-intensive. Z’’ 1995 for non-manufacturing (thresholds 2.6/1.1) — hard
+floor Z’’ = below 1.1. Document model used.
+|Market Cap|Piotroski Application |
+|----------|------------------------------|
+|<$10B |≥7 scores 8–10; 4–6 scores 2–5|
+|>$10B |Score 6 = soft flag only |
+|ADRs |≥8 for solvency score above 8 |
+REITs/financials: Piotroski ≤3 = soft flag, not hard disqualifier. Piotroski 4–6: reduce score only
+when driven by asset turnover or current ratio components not captured elsewhere. If
+component breakdown unavailable from TIKR: compute from 10-K/10-Q or apply reduction
+conservatively — document.
+Altman + Piotroski Conflict: Score at lower implied score until resolved. Counts as one stacking
+condition.
+DTC Independence: Verify DTC not elevated solely due to ADTV drop. If so: journal note only.
+COMPOSITE CALCULATION AND TIER ASSIGNMENT
+Step 1 — Factor Scores:
+|Factor |Raw (0–10)|Modifiers |Adjusted|Weight|Weighted|
+|----------------|----------|---------------------------------------|--------|------|--------|
+|Momentum |___ |ETF/cross/vol/breakout/HV:
+___ |___ |×0.25 |___ |
+|Earnings Quality|___ |Divergence/flags:
+___ |___ |×0.20 |___ |
+|Profitability |___ |Trend/FCF:
+___ |___ |×0.20 |___ |
+|EAR |___ |Revision momentum:
+___ |___ |×0.10 |___ |
+|Insider |___ |Age/plan/SI/flow/dilution/coverage:
+___|___ |×0.15 |___ |
+|Valuation |___ |GP/A/net cash/flag:
+___ |___ |×0.05 |___ |
+|Solvency |___ |DTC/model/conflict:
+___ |___ |×0.05 |___ |
+Sum all weighted scores and multiply by 10 to convert to 0–100 scale. This is the raw composite
+before standalone and regime deductions.
+| Raw Composite | | | | | ___
+/100 |
+Step 2 — Standalone Deductions: [C5 — interest rate row added]
+|Condition
+|Deduction|
+|-------------------------------------------------------------------------------------------------------------------------------
+---------------------|---------|
+|Realized vol >40% (30-day annualized std dev of log returns × √252, TradingView 30d HV
+close-to-close) — suspended when MTUM outperforms VTV by >5pp|−5 |
+|SI% 5–15% AND DTC 3–7 days simultaneously
+|−1 |
+|Cumulative earnings quality −2 or worse
+|−5 |
+|Sector/theme at 20–25% of portfolio
+|−3 |
+| 10-year Treasury yield 30-day change >50bps AND (P/S >10× OR PEG >2.5×) | −3 |
+Step 3 — Regime Adjustments:
+|Condition |Deduction |
+|------------------------------------------------------------------------|--------------------------|
+|Soft crash flag active (Leg 1 + ≥18% drawdown) |−10 |
+|Full crash flag (both legs confirmed) |−20 |
+|MTUM/VTV cap (VTV outperforming MTUM ≥5pp trailing 6-month total return)|−5
+|
+|HY OAS bear rally (widening >150bps prior 60 days) |−5 momentum component
+only|
+Final composite = raw composite − standalone deductions − regime deductions.
+Step 4 — Tier Assignment:
+|Final Composite|Tier |Position Size|
+|---------------|---------|-------------|
+|80–100 |A |6–8% |
+|65–79 |B |3–5% |
+|50–64 |C |1–2% |
+|35–49 |D Watch |Paper only |
+|Below 35 |Eliminate|No entry |
+Absolute Position Size Caps: Tier A ≤8%. Tier B ≤5%. Tier C ≤2%. Composite-proportional sizes
+within these ranges but cannot exceed them. Mid tier maximum: Tier C. Small tier maximum:
+1% hard cap.
+Step 5 — Apply Tier Cap Overrides 1–5.
+Step 6 — Composite-Proportional Sizing:
+Position % = Tier floor % + (Tier range % × ((Final composite − Tier floor score) / Tier score
+range)). Apply mechanically.
+Step 7 — Document complete tier math as single coherent calculation.
+REGIME FRAMEWORK
+MTUM/VTV: Compare trailing 6-month total return. Document exact spread and date.
+|Signal |Action |
+|---------------------|---------------------------------------------------------------------------|
+|VTV > MTUM ≥5pp |Cap active → Override 2 + −5 composite + vol deduction active. Revert
+<3pp.|
+|MTUM > VTV >10% |Tighten ROIC to top quartile |
+|<5pp either direction|Standard |
+Two checks weekly: (1) cap still active (spread ≥5pp)? (2) spread below 3pp reversion?
+HY OAS on FRED:
+|Signal |Action |
+|---------------------------|-------------------------------------------------------------------------------------------------|
+|>600bps |Bear rally constraint system-wide. Require positive 12-1 momentum AND
+within 15% of 52-week high.|
+|Widening >150bps in 60 days|−5 momentum component + bear rally recency constraint
+|
+|
+|Widening >300bps in 60 days|25% cash floor. Exit Tier C. Review Tier B.
+Crash Flag:
+Full crash flag — both legs required:
+1. 12-month momentum excess returns top decile historically
+2. Market drawdown >20% from prior peak followed by >10% rebound
+Full flag: −20 composite + Override 4a + tighten stops + pause Tier C momentum entries.
+Existing positions when full crash flag activates: Reduce all momentum-dependent Tier A to Tier
+B maximum within 5 trading days. Reduce all momentum-dependent Tier B and Tier C by 50%
+within 5 trading days. Document reduction and date.
+Soft crash flag — Leg 1 + ≥18% drawdown. Leg 1 is the same as full crash flag Leg 1: 12-month
+momentum excess returns in the top decile historically, measured at the time of the drawdown:
+−10 composite + Override 3 + Override 4b. Existing positions: trim any position sized above
+composite-proportional sizing output that would result from −10 applied at entry within 10 trading
+days.
+Soft crash flag deactivation: Flag deactivates when BOTH conditions are met simultaneously:
+(1) S&P 500 has recovered to within 5% of the prior peak that triggered the flag, AND (2) 12-1
+skip-month momentum on the S&P 500 is positive. Check both conditions weekly. Document
+date of deactivation.
+[C9 — soft crash flag 50% intensity rule removed]
+[C8 — graduated crash flag watchlist rule removed]
+Soft Crash Flag Journal Checkpoint: After every 10 entries under active soft flag: review
+blocking rate, false positives, missed opportunities. Document.
+POSITION MANAGEMENT
+Entry: 50% at initial entry. 50% on confirmation (close above entry on >1.25× 20SMA volume
+within 15 calendar days). If confirmation not met by day 15: deploy second 50% only if price is
+within 3% below entry and has not exceeded entry by more than 1%. If drifted >3% below entry
+without stop: cancel second tranche. No gap-up entries >5% above prior close without intraday
+pullback. Do not chase gaps >4% above intended entry. Both conditions apply independently.
+When both gap conditions triggered simultaneously, the more restrictive governs. A gap >4%
+above intended entry prohibits entry regardless of intraday pullback.
+Stops: Swing: 7–8% hard stop. Long-term: 15% trailing stop OR 200SMA breach — whichever
+first. Both stop types set at entry. ATR check: if 2.5× 20-day ATR implies stop greater than
+maximum, reduce position size rather than truncate stop. ATR-adjusted position size =
+composite-proportional size × (maximum stop type % ÷ 2.5× 20-day ATR %). Use 7% swing
+maximum and 15% long-term maximum. Document ATR-adjusted size and ATR value.
+Whipsaw Re-Entry: Minimum 5 trading days after stop-out. Full checklist required. Swing
+re-entries: 15-day earnings gate applies without exception. Long-term re-entries within 10
+calendar days of earnings: reduce initial size to 25% until post-earnings confirmation. Voluntary
+exit: minimum 1 trading day before re-entry same ticker.
+EXIT RULES
+Swing Trades:
+∙
+∙
+20% gain: exit 50%, move stop to breakeven
+25% gain: exit remaining unless two of three simultaneously true: (1) momentum
+rank improved since entry, (2) no earnings within 15 days, (3) no active crash flag
+∙
+Any active crash flag: full exit at 20% — no exceptions
+∙
+Do not hold through earnings unless intended at entry
+Long-Term Holds:
+Primary trigger: 10 consecutive days below 200SMA → mandatory reassessment.
+Parallel trigger: 5+ of any 10 consecutive days below 200SMA AND death cross confirmed →
+mandatory reassessment.
+Reassessment — stay only if one confirmed:
+∙
+Anchor A: Fresh insider buy within past 30 days
+∙
+Anchor B: Earnings quality not deteriorated from entry AND momentum rank top
+three quintiles of sector
+If neither anchor confirmed: exit within 5 trading days.
+Fundamental Exit (both types):
+∙
+ROIC below sector median two consecutive quarters
+∙
+FCF negative two consecutive quarters
+∙
+Insider cluster selling ≥2 insiders within 30 days
+∙
+Earnings quality cumulative −2 or worse
+∙
+Solvency flag (CHS distress or Altman below floor)
+∙
+Earnings miss plus downward revision
+∙
+Composite below 35 on reassessment
+PORTFOLIO CONSTRUCTION
+[C20 — tier limits added]
+|Parameter |Limit |
+|---------------------------------------|------------------------------------------------------------|
+|Maximum positions |15 |
+|Maximum sector/theme |25% |
+|Maximum 4-digit GICS subindustry |3 positions |
+|Tier A simultaneously |3 maximum |
+|Total ADR exposure |10% |
+|Individual non-dual-listed ADR |3–5% maximum |
+|Chinese ADR |5% |
+|Cash floor |10% minimum; 15% neutral regime; 25% HY OAS widening
+>300bps|
+|Swing allocation |≤30% of portfolio |
+|Maximum concurrent swing positions |5 |
+|Maximum small tier positions ($50–200M)|3 |
+|Maximum mid tier positions ($200–750M) |4 |
+|Maximum small tier allocation |3% of portfolio |
+|Maximum mid + small tier combined |10% of portfolio |
+Quarterly Correlation Review: Recompute pairwise correlations using most recent 60-day
+window. Pairs exceeding 0.85 flagged for review. Entry threshold 0.65 (0.55 crash flag). Review
+threshold 0.85.
+Theme Ceiling Trim Priority: Trim weakest composite first, then weakest momentum same tier.
+SWING TRADE VARIANT
+All hard floors and composite scoring apply. Additional requirements:
+∙
+Qualifying insider signal required (score >0 before modifiers) — no insider signal
+= no swing entry
+∙
+Catalyst identified before entry
+∙
+Hold period 2–8 weeks
+∙
+Momentum score ≥6 required
+∙
+15-day pre-earnings no-entry — no exceptions. Uncertain earnings date = within
+window until confirmed.
+∙
+Maximum Tier B regardless of composite
+∙
+Options flow >2× average = +0.5 insider modifier
+∙
+SI >10% + confirmed catalyst + SI trending down = +1 swing booster. SI trending
+down alone = +0.5. SI >10% standalone prohibited.
+[C10 — NSS reference removed. No NSS reference existed in this section in v6.6.]
+WATCHLIST PROTOCOL
+Stocks failing only momentum (above 30% hard floor) with composite scores that would
+otherwise reach Tier B+ go to active watchlist.
+Re-Entry Trigger — all three simultaneously:
+1. Price crosses above 200SMA on >1.25× 20SMA volume closing day
+2. Insider signal within 240-day decay window
+3. CHS and solvency outside distress zone
+When triggered: run full composite immediately.
+SPIN-OFF PROTOCOL
+Insiders purchasing open-market shares within 60 days of separation:
+∙
+∙
+∙
+∙
+∙
+Replace 200SMA check with price above first 20-day average closing price
+Mandatory Tier C maximum until 200 trading days of price history
+Position capped at 1% until full momentum score computable
+All other gates apply normally
+Document: “Spin-off entry — modified momentum gate, Tier C cap until [date]”
+WEEKLY WORKFLOW
+Step 0 — Pre-Session Data Gathering:
+Pull for all active positions and new insider signals: price vs 200SMA, sector ETF vs own
+200SMA, SI%, DTC, ADTV, 30d HV, sector median HV, earnings date, 10-year Treasury yield
+30-day change. Record in table before scoring.
+[C23 — tier designation added to Step 1]
+1. Scan OpenInsider — cluster buys or large CEO/CFO buys. For each signal: note
+market cap tier (Large ≥$750M, Mid $200–750M, Small $50–200M). Apply tier-appropriate hard
+floor modifications before composite scoring.
+2. Check positions — any crossing 200SMA?
+3. Review exit rules — flag any long-term hold breaching 200SMA rules, apply
+reassessment anchor immediately.
+4. Check watchlist — any triggering re-entry?
+5. Check earnings calendar — any positions within 15-day window?
+6. Update journal.
+7. Check HY OAS and MTUM/VTV — (1) cap still active (spread ≥5pp)? (2) spread
+below 3pp reversion? Document spread. Check 10-year Treasury yield 30-day change — if
+>50bps: apply −3 composite deduction to any candidate or held position with P/S >10× or PEG
+>2.5×
+. Document yield change and affected positions.
+8. Check crash flag — has Leg 2 confirmed? Check both soft flag deactivation
+conditions: (1) S&P 500 within 5% of prior peak, (2) 12-1 momentum on S&P 500 positive.
+Document status.
+9. Run composite on new candidates from Step 1.
+10. If 10 entries under active soft flag since last checkpoint — run soft flag journal
+review.
+11. If 20 positions since last Layer 2 calibration — run threshold calibration check.
+12. Emergency regime check: if 3 or more positions hit fundamental exit triggers
+within any 30-day period, pause all new entries immediately and run full regime check. Not a
+Layer 1 unlock. Document findings and resume only after regime check complete.
+Apply standard tier designation (Large/Mid/Small) based on market cap at entry. All tier-specific
+rules apply. Document tier
+ADDENUM COMPLETE LIST STARTS HERE, THE REMAINDER OF THE SYSTEM
+STARTING HERE IS THE ADDENUM:
+Conflict-precedence rule: when a later Layer 3 Clarification Addendum defines a precise
+executable implementation for a rule, that later addendum controls implementation over earlier
+main-body prose unless the earlier text is explicitly preserved
+Layer 3 Clarification Addendum: When GICS peer count is below the required threshold and
+sector ETF or Russell 2000 fallback is used for 12-1 skip-month momentum, assign momentum
+quintile by ranking the stock’s benchmark-relative 12-1 return against the empirical
+cross-sectional distribution of that same benchmark-relative return within the same fallback
+benchmark cohort in the current scoring run; minimum 5 names required per cohort, otherwise
+quintile = None.
+For Earnings Quality soft flags,
+“AR or inventory growing materially faster than revenue” means
+AR growth exceeds revenue growth by more than 10 percentage points or inventory growth
+exceeds revenue growth by more than 10 percentage points, using the current metric definition;
+this remains one combined soft flag condition.
+When GICS peer count is below the required threshold and sector ETF or Russell 2000 fallback
+is used for 12-1 skip-month momentum, assign momentum quintile by ranking the stock’s
+benchmark-relative 12-1 return against the empirical cross-sectional distribution of that same
+benchmark-relative return within the same fallback benchmark cohort in the current scoring run;
+minimum 5 names required per cohort, otherwise quintile = None.
+For Earnings Quality soft flags,
+“AR or inventory growing materially faster than revenue” means
+AR growth exceeds revenue growth by more than 10 percentage points or inventory growth
+exceeds revenue growth by more than 10 percentage points, using the current metric definition;
+this remains one combined soft flag condition.
+Layer 3 Clarification Addendum — Forward Estimate Period Selection For
+forward-estimate-dependent fields, including forward P/E eligibility paths, analyst-count checks
+tied to forward periods, and revision-history alignment, the relevant estimate period is the
+nearest fiscal period whose fiscal period end is strictly after the most recent already reported
+fiscal period end. Do not use calendar today as the boundary.
+A fiscal period may have already ended but still be the correct forward estimate period if that
+period has not yet been reported. Document the reported-period cutoff used when relevant.
+Additional Execution Clarifications:
+HY OAS bear rally deduction
+The HY OAS bear rally deduction is applied at Step 3 as a regime adjustment to the final
+composite, not as a pre-weight deduction to the raw Factor 1 score. Magnitude = −5 composite
+points. It is momentum-linked in rationale, but it is not implemented by subtracting 5 from the
+unweighted momentum factor score.
+Factor 2 row precedence
+When Sloan ratio and OCF/NI qualify for different Earnings Quality scoring rows, score at the
+lower implied row. Document which component drove the lower row.
+Forward estimate period selection
+For forward-estimate-dependent fields, including forward P/E eligibility paths, analyst-count
+checks tied to forward periods, and revision-history alignment, the relevant estimate period is
+the nearest fiscal period whose fiscal period end is strictly after the most recent already reported
+fiscal period end. Do not use calendar today as the boundary.
+A fiscal period may have already ended but still be the correct forward estimate period if that
+period has not yet been reported.
+Large-tier PEG unavailable fallback
+If Finviz PEG is unavailable for a Large-tier name, skip PEG and score Factor 6 using the
+EV/EBITDA row only. Document “PEG unavailable — EV/EBITDA row used.
+”
+DTC definition
+DTC (Days to Cover) means total short interest shares divided by average daily trading volume.
+Use a provider field only if it explicitly represents days-to-cover. Do not substitute unrelated
+short-interest ratio fields. Soft crash flag and full crash flag are manual-by-design regime states
+until a dedicated historical decile engine is implemented. MTUM/VTV cap state and HY OAS
+bear-rally state are live-computed from current data. Manual regime states must be explicitly
+documented in the journal/output and may not be represented by hardcoded operative defaults.
+Point-in-time shares-outstanding concept :
+“For any point-in-time shares-outstanding-dependent field, use only point-in-time
+shares-outstanding concepts. Allowed fallback chain: share-class shares outstanding, provider
+point-in-time sharesOutstanding, market cap divided by current price, else None. Weighted
+average shares outstanding is not an allowed fallback for point-in-time shares outstanding.
+Financial Sector Substitution fail-path: For banks, asset managers, and BDCs covered by
+Financial Sector Substitution, do not fall back to ROIC/WACC under any condition. If the
+required substitution metric is present and the threshold is met, apply the substitution row. If the
+required substitution metric is present and the threshold fails, assign raw Profitability score = 1.
+If the required substitution metric is unavailable, score Factor 3 as incomplete (None) and
+document the missing metric.
+Approve moderate financial/REIT Piotroski handling: CHS remains primary, Piotroski <=3 is a
+soft-flag penalty not a hard fail, unresolved weak-component cases score conservatively at 5,
+direct short-interest % aliases are forbidden, forward-estimate routing must use
+reported-period-end, secondary-offering detection may use broader candidate forms but still
+requires filing-text confirmation, and manual-review stays manual-by-design with explicit
+review-needed reason flags.
+Institutional convergence is evaluated on a shares-held basis from quarter-end 13F holdings
+data.
+‘Initiated’ means prior-quarter shares-held = 0 and current-quarter shares-held > 0.
+≥20%’ means current-quarter shares-held ≥ prior-quarter shares-held × 1.20.
+‘Added
+Revision Momentum is computed from forward-period consensus EPS drift over approximately
+90 calendar days for the same fiscal period end. Use the nearest fiscal period end strictly after
+the most recent already reported period end. Compare the current consensus estimate for that
+period against the stored estimate for the same period closest to 90 calendar days earlier. Apply
++1 when consensus EPS drift is positive and at least 5%. Apply −1 when consensus EPS drift is
+negative and at least 5% in absolute value. Otherwise apply no adjustment. Skip the modifier
+only when analyst count for that forward period is fewer than 2 or when no valid same-period
+lookback snapshot exists. This addendum supersedes the earlier “majority revising
+upward/downward” wording.
+Secondary-offering candidate forms are S-1/S-1-A, S-3/S-3-A/S-3ASR/POS AM/POSASR,
+S-11/S-11-A, and 424B1–424B5. Exclude S-4/F-4 and S-8. A candidate filing counts only when
+filing text confirms primary common-equity issuance by the issuer. Debt-only, preferred-only,
+warrants-only, units-only, and resale-only selling-stockholder filings do not count.
+When top-3 portfolio correlation context is unavailable, the correlation hard floor is treated as
+manual-by-design and does not auto-fail. In that case the output must explicitly mark manual
+correlation review as required before entry.
+Manual-review fields use a strict three-state convention: True = review required, False = not
+required / auto-resolved, None = not applicable
+Factor 3 — Profitability row precedence
+When Profitability row conditions overlap, evaluate the row table hierarchically from strongest to
+weakest. If a stronger row is not fully satisfied but a weaker row is satisfied, assign the weaker
+valid row rather than returning incomplete solely because a stronger bucket partially matched
+and failed its spread condition.
+Factor 5 — Terminal-state sequencing
+The following Factor 5 outcomes are terminal:
+●
+Signal age beyond 240 days = score 0. No later modifier may re-lift the score above 0.
+●
+10b5-1 pre-reform or unverifiable = subtract 3 and cap the adjusted score at 4 after all
+other applicable modifiers have been applied.
+Factor 5 — Operative-signal scope
+The “Insider buy within 10 trading days of earnings” modifier applies only to the operative
+qualifying insider signal used for scoring, not to any non-operative historical buy in the lookback
+set.
+Cluster confirmation scope
+For any cluster-buy classification, each counted cluster member must independently satisfy all
+of the following:
+●
+identifiable insider identity
+●
+qualifying transaction inside the required cluster window
+●
+●
+best-available open-market confirmation for that member
+One filing may not validate the entire cluster by itself.
+Spin-off protocol — event anchor
+The spin-off protocol applies only when the company’s legal separation date is known.
+“Within
+60 days of separation” means within 60 calendar days after the legal separation date. If the
+separation date is unavailable, the spin-off protocol is not applied.
+Factor 2 — Capital-intensive Sloan peer
+confirmation
+For capital-intensive companies, the “lowest tertile GICS 4-digit peer group confirmation” rule is
+defined as follows:
+●
+cohort = same-run GICS 4-digit peers
+●
+minimum cohort size = 5
+●
+ranking is ascending by Sloan ratio, since lower Sloan is better
+●
+●
+confirmation requires the stock to fall in the best third of that cohort
+If fewer than 5 qualifying peers exist, peer-tertile confirmation is unavailable and the
+Earnings Quality result for that confirmation path is incomplete / manual-review required.
+Factor 3 — Financial sector substitution
+data availability
+For asset managers and BDCs, the required substitution metric is FRE growth >10% YoY. If that
+FRE growth metric is unavailable, unverified, or not cleanly established, do not substitute
+proxies. Treat Factor 3 as incomplete.
+Factor 3 — Economic ROIC trend continuity
+When Economic ROIC is the operative profitability measure, ROIC trend modifiers may be
+applied only if a quarterly Economic ROIC series exists. If no quarterly Economic ROIC series
+exists, no ROIC trend modifier is applied.
+Factor 2 — Earnings-vs-revenue divergence rebuttal
+For the rule “Earnings growing faster than revenue 2+ consecutive quarters without
+documentable gross margin improvement,
+” a gross-margin rebuttal must cover the same two
+consecutive intervals as the trigger. A one-interval gross-margin improvement is insufficient to
+fully rebut a two-interval divergence pattern.
+PRIMARY SOURCE MAY CHANGE
+•
+A field’s named primary source is not permanently fixed if that source becomes
+outdated, unavailable, impractical, or materially inferior in the active workflow.
+•
+Any such change must be explicitly documented by addendum with:
+•
+field
+•
+old source
+•
+new approved source chain
+•
+reason
+•
+effective version/date
+•
+•
+•
+Concept integrity must be preserved.
+Same-source comparison rules still apply.
+No mixed-source comparison is allowed unless explicitly approved.
+•
+For EV/EBITDA and EV/EBITDA sector median, prior TIKR-primary wording is
+superseded by the currently approved source chain recorded in the active addendum/version
+notes.
+When ETF fallback or Russell 2000 fallback is used for momentum peer substitution,
+manual
+review
+sector
+etf
+_
+_
+_
+_
+representative = True. Do not auto-clear this field programmatically
+on those fallback paths. False is reserved for a future explicitly approved automated
+representativeness confirmation. None is reserved for non-applicable paths
+For ev
+ebitda and ev
+ebitda
+sector
+_
+_
+_
+_
+median, prior TIKR-primary wording is replaced by the
+following executable source chain:
+●
+Stock ev
+_
+ebitda primary = FMP key-metrics-TTM enterpriseValueOverEBITDA
+●
+Stock ev
+_
+ebitda secondary = FMP enterprise-values evToEbitda, using the most recent
+valid row
+●
+No tertiary provider is approved for this field
+●
+If both approved FMP fields are unavailable, ev
+_
+ebitda = None
+ev
+ebitda
+sector
+_
+_
+_
+median must be built only from peer-row ev
+ebitda values sourced from that
+_
+same approved FMP family. Cross-provider or mixed-family comparisons are not allowed.
+No minimum peer floor is locked for ev
+ebitda
+sector
+_
+_
+_
+median at this time. Use any available
+non-None same-source peer values. If zero valid same-source peer values exist,
+ev
+ebitda
+sector
+median = None.
+_
+_
+_
+If the operative EV/EBITDA comparison required for Factor 6 cannot be formed because stock
+EV/EBITDA or sector-median EV/EBITDA is None, the affected EV/EBITDA comparison path is
+incomplete and must not be silently substituted with a different provider or concept.
+For the Factor 5 modifier TTM insider buy dollar value <10% of TTM net share dilution when
+dilution >3%, use the following executable methodology:
+Reference date = latest insider transaction date used for the operative insider signal.
+Reference-date close = stock close on that reference date.
+Current point-in-time shares outstanding chain:
+●
+primary = Polygon / Massive-equivalent ticker-details share-class shares outstanding
+●
+secondary = provider point-in-time sharesOutstanding
+●
+tertiary = market cap divided by current price
+●
+else None
+Prior-year point-in-time shares outstanding must be anchored to reference
+_
+date - 365 days, not
+current
+_
+date - 365 days.
+Prior-year shares chain:
+●
+use the quarterly balance-sheet shares-outstanding field from the row dated closest to
+and on or before reference
+_
+date - 365 days
+●
+if no qualifying row exists within 5 quarters of that anchor, prior-year shares = None
+Dilution calculation:
+●
+dilution
+_
+shares = max(0, current
+_pt
+_
+shares - prior
+_year
+_pt
+_
+shares)
+●
+dilution
+_pct = dilution
+_
+shares / prior
+_year
+_pt
+_
+shares, only if prior
+_year
+_pt
+_
+shares > 0
+●
+dilution
+dollars = dilution
+shares × reference
+date
+close
+_
+_
+_
+_
+Weighted-average shares outstanding are not allowed anywhere in this dilution comparison
+path.
+If any required input is unavailable, ttm
+insider
+_
+_
+buy_
+vs
+_
+dilution = None.
+The conceptual EAR window remains cumulative [-1, 0,
+sector ETF already defined in Factor 1.
+Event-day timing is locked as follows:
+●
+announcement before market open = same trading day is day 0
++1] abnormal return versus the same
+●
+announcement during regular trading hours = same trading day is day 0
+●
+announcement after market close = next trading day is day 0
+●
+announcement on a non-trading day = next trading day is day 0
+●
+if announcement timing is unavailable, use the reported earnings date as day 0 and
+document timing as unverified
+Executable EAR window:
+●
+start = close of trading day -1
+●
+end = close of trading day +1
+●
+abnormal return is measured versus the same sector ETF over the same resolved
+window
+This timing rule controls implementation of the EAR helper and any downstream logic using
+earnings-event dates.
+Large-tier GICS 4-digit momentum ranking requires a minimum of 5 qualifying peers.
+If Large-tier GICS peer count is fewer than 5:
+●
+do not rank within the GICS 4-digit peer group
+●
+use the already-approved sector ETF relative fallback
+●
+if sector ETF representativeness fails, use the already-approved Russell 2000 fallback
+●
+fallback-cohort quintile assignment continues to require a minimum of 5 names,
+otherwise quintile = None
+Document peer count, fallback used, and method used.
+For Altman Model Variant: Original 1968 on manufacturing/capital-intensive companies, do not
+use an unverified provider precomputed Altman Z score as the operative model output.
+The operative 1968 Altman Z score must be recomputed locally from raw statement fields using
+the original five-factor formula:
+●
+X1 = (Current Assets − Current Liabilities) / Total Assets
+●
+X2 = Retained Earnings / Total Assets
+●
+X3 = EBIT / Total Assets
+●
+X4 = Book Equity / Total Liabilities
+●
+X5 = Revenue / Total Assets
+Z = 1.2×X1 + 1.4×X2 + 3.3×X3 + 0.6×X4 + 1.0×X5
+For this path, X4 uses book equity, not market capitalization.
+If any required input for the operative 1968 computation is unavailable, altman
+z
+score = None
+_
+_
+and existing downstream model/null handling applies. Do not substitute a provider precomputed
+score or a market-cap-based proxy on the operative 1968 path.
+For net
+debt
+_
+_
+ebitda, use quarterly EBITDA from the approved same-source FMP
+income-statement family.
+●
+Primary:
+○
+quarterly ebitda
+●
+Fallback, only if quarterly ebitda is unavailable:
+○
+(ebit or operatingIncome) + depreciationAndAmortization
+○
+all components must come from the same-source quarterly income-statement
+rows
+●
+If any required fallback component is unavailable:
+○
+ebitda = None
+●
+Do not mix providers or statement families on this path
+Exclude financial-sector substitution names and REITs from the fallback path; if direct quarterly
+ebitda is unavailable there, leave net
+debt
+ebitda =
+_
+_
+For the current automated workflow, the following source-chain lock applies to Factor 3:
+• ROIC:
+• manual TIKR ROIC remains primary when populated
+• if manual TIKR ROIC is unavailable, approved automated fallback chain is:
+1. FMP key-metrics ROIC / returnOnInvestedCapital
+2. FMP ratios returnOnInvestedCapital
+3. local NOPAT fallback only if EBIT and effective tax rate are both available
+• no hardcoded tax-rate proxy is permitted
+• if effective tax rate is unavailable, local NOPAT fallback is unavailable
+• WACC:
+• manual TIKR WACC remains primary when populated
+• if manual TIKR WACC is unavailable, approved automated fallback is FMP DCF WACC
+• actual source used must be documented
+• Economic ROIC:
+• manual TIKR Economic ROIC remains primary when populated
+• if manual TIKR Economic ROIC is unavailable, only an explicitly provider-labeled Economic
+ROIC field may be used
+• no proxy substitution is approved for Economic ROIC
+• if no true Economic ROIC field is available, Economic ROIC is unavailable
+• Financial Sector Substitution interaction:
+• for banks, asset managers, and BDCs covered by Financial Sector Substitution, do not apply
+ROIC/WACC fallback logic or a WACC-unavailable cap
+• substitution-covered names remain governed by the already-locked Financial Sector
+Substitution fail-path
+This source-chain addendum is the approved source-change record for the current automated
+workflow and supersedes earlier TIKR-primary-only implementation wording for these fields
+while preserving concept integrity and source documentation.
+For GP/A in Factor 6, the operative denominator is current-period total assets, not average total
+assets.
+• GP/A = (Revenue − COGS) / current-period total assets
+• average total assets remains the operative denominator for Sloan in Factor 2 only
+• the existence of prior assets does not change the GP/A denominator
+This lock supersedes any contrary patch-history note or prior implementation using average
+assets for GP/A.
+The “gross margin <35%” switch used for GP/A benchmark routing is sector-level, not
+issuer-level.
+• the switch must be determined from same-run sector / peer-sector gross-margin context
+• issuer-specific gross margin may not be used by itself to decide whether GP/A should route to
+the sector-peer benchmark path
+• this same sector-level low-margin determination also controls whether capital-intensive Sloan
+peer confirmation is required when that confirmation depends on the same low-margin sector
+condition
+For forward-period analyst coverage, confirmed zero and genuine unknown are separate states.
+• if the forward estimates payload exists but zero qualifying forward-period rows survive the
+reported-period-end cutoff, analyst
+count = 0
+_
+• if the provider payload is unavailable or forward-period semantics remain unproven,
+analyst
+count = None
+_
+• confirmed zero triggers the existing tier rules for:
+• EAR neutral routing
+• CCG 3-factor exemption where applicable
+• EV-only valuation routing where applicable
+• thin-coverage logic where applicable
+• genuine unknown does not auto-convert into confirmed insufficient coverage unless the
+governing system explicitly says so
+For the Factor 5 modifier “Insider buy within 10 trading days of earnings”:
+• the modifier applies only to the operative qualifying insider signal
+• the relevant earnings event is the nearest earnings event to the operative buy date in absolute
+trading-day distance
+• both the most recent prior earnings event and the next earnings event must be considered
+when available
+• apply the modifier if the nearest valid trading-day distance is 10 or fewer trading days
+The following person-level and EDGAR matching locks apply:
+• CEO/CFO status is person-level, not row-text-level
+• once an insider is established as CEO or CFO from a qualifying row or approved role source in
+the operative set, later same-person rows do not need to repeat the title text for:
+• CEO/CFO self-sale hard fail logic
+• CEO/CFO-included cluster classification
+For EDGAR submission matching:
+• filingDate and transactionDate are not interchangeable
+• EDGAR submissions matching must use filingDate semantics only
+• transactionDate may not be substituted into a filing-date filter
+For cluster confirmation:
+• one filing may not validate the entire cluster
+• destructive pre-pruning of candidate open-market buy rows using a single SEC confirmation
+artifact is not approved
+• cluster confirmation remains member-level
+“SPAC” and “no operating business” are separate hard-floor concepts.
+• if either SPAC is confirmed True or no-operating-business is confirmed True, hard fail
+• if both concepts are unverified, do not silently pass the stock as clear on this path
+• in that case, manual review is required before entry
+• a provider SPAC boolean alone is not a complete implementation of the full “SPAC / no
+operating business” hard-floor concept
+Asset-light / CHS-only auto-classification is allowed only for exact approved industry matches in
+the following allowlist:
+• application software
+• systems software
+• software - infrastructure
+• software - application
+• IT services
+• internet content & information
+• interactive media & services
+• data processing & outsourced services
+The token “internet services” by itself is not an approved asset-light auto-classification token.
+Broad financial classification must be split into:
+• substitution-covered financials:
+• banks
+• thrifts & mortgage finance
+• asset managers
+• BDCs
+• non-substitution financials:
+• insurance
+• capital markets
+• diversified financials
+• other financials not explicitly covered by the substitution rule
+An issuer is auto-classified as MLP only when at least two independent MLP signals are
+present:
+• industry / profile contains oil & gas midstream, master limited, or MLP
+• company name contains Partners, L.P., LP, or equivalent partnership naming
+• entity / filing descriptor confirms limited partnership structure
+If fewer than two signals are present, do not auto-classify as MLP.
+If an issuer does not match an approved classification bucket:
+• classification remains unproven
+• do not force CHS-only routing
+• do not force Financial Sector Substitution routing
+• do not force EBITDA-fallback exclusion from a broad bucket label
+• manual review is required
+For net
+debt
+_
+_
+ebitda quarterly EBITDA fallback, exclusion applies only to:
+• banks
+• asset managers
+• BDCs
+• REITs
+A broad generic “financial” bucket is not an approved exclusion key by itself.
+When Override 4a or Override 4b requires top-10% or top-20% sector momentum and that
+percentile is unavailable:
+• unknown does not auto-eliminate the stock
+• manual regime review is required
+• a conservative Tier C cap applies while that regime-state review remains unresolved
+Specific lock:
+• Full crash path:
+• if full crash is active
+• price is not within 5% of the 52-week high
+• and top-10% sector momentum is unavailable
+• do not auto-eliminate
+• require manual review
+• cap at Tier C while unresolved
+• Soft crash path:
+• if soft crash is active
+• price is not within 10% of the 52-week high
+• and top-20% sector momentum is unavailable
+• do not auto-eliminate
+• require manual review
+• cap at Tier C while unresolved
+The Factor 5 options-flow modifier may be implemented as follows:
+• call-only filter must be applied at the contract-list stage via contract
+_
+type = call
+• same-day options-flow measure = aggregate same-day call-contract volume across all listed
+call contracts for the underlying from the approved provider’s per-contract daily summaries
+• baseline measure = the 30-trading-day average of that same call-only measure from the same
+source
+• the modifier fires only when:
+• qualifying insider buy exists
+• same-day total call-contract volume > 2.0 × baseline average
+• if the contract list, contract daily summary, or required daily volume field is unavailable,
+options
+flow
+_
+_
+flag = None and no modifier fires
+• no cross-provider mixing is approved on this path
+For REITs, MLPs, and utilities in the Factor 2 OCF threshold path:
+• OCF/Revenue >15% is an approved standalone path when FFO-equivalent is unavailable
+• FFO-equivalent is optional, not mandatory
+• only when both:
+• FFO-equivalent is unavailable
+• and OCF/Revenue is unavailable
+does the path become incomplete / manual-review required
+For the manual-review field tied to negative FCF streak and path to positive FCF:
+• if the negative-FCF streak is unknown, the manual-review field = None
+• if the negative-FCF streak is False, the manual-review field = False
+• if the negative-FCF streak is True and the documented path to positive FCF is unresolved, the
+manual-review field = True
+• if the negative-FCF streak is True and the documented path to positive FCF is already
+resolved, the manual-review field = False
+This lock uses the already-approved documented-path concept and does not introduce a new
+conceptual dependency.
+Document 1 complete v6.8
